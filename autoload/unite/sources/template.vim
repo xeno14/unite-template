@@ -1,8 +1,7 @@
-call unite#util#set_default('g:unite_template_dirs', ['~/.vim/template'])
+call unite#util#set_default('g:unite_template_dirs', ["~/.vim/template"])
 
 let s:source = {
   \ 'name': 'template',
-  \ 'description': 'read a template file',
   \ }
 
 function! s:source.gather_candidates(args, context)
@@ -26,7 +25,7 @@ function! s:source.gather_candidates(args, context)
     \ }')
 endfunction
 
-call unite#define_source(s:source)
+function! unite#sources#template#define()
+  return s:source
+endfunction
 call unite#custom#default_action("source/template/*", "read")
-
-unlet s:source
